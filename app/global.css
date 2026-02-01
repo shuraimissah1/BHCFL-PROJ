@@ -1,0 +1,26 @@
+/*
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*/
+
+/* Optional global styles */
+
+/*
+html,
+body {
+  scroll-behavior: smooth;
+} 
+*/
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base page styling */
+html,
+body {
+  @apply bg-gray-50 text-gray-800;
+}
