@@ -8,7 +8,7 @@ export default function Navbar() {
 
   return (
     <header className="bg-white border-b">
-      <nav className="max-w-7xl mx-auto px-6">
+      <nav className="fixed top-0 left-0 w-full z-[100] bg-white">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="font-bold text-lg text-gray-900">
@@ -56,10 +56,10 @@ export default function Navbar() {
                     group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
                     transition-all duration-200 ease-out">
                 <ul className="py-3">
-                <DropdownItem href="/about/mission" label="Join BHCFL" />
-                <DropdownItem href="/about/leadership" label="Start Homeschooling" />
-                <DropdownItem href="/about/impact" label="Helpful Sites" />
-                <DropdownItem href="/about/awards" label="Scholarships" />
+                <DropdownItem href="/membership/join" label="Join BHCFL" />
+                <DropdownItem href="/membership/start-homeschooling" label="Start Homeschooling" />
+                <DropdownItem href="/membership/helpful-sites" label="Helpful Sites" />
+                <DropdownItem href="/membership/scholarships" label="Scholarships" />
                 </ul>
             </div>
             </li>
@@ -81,12 +81,11 @@ export default function Navbar() {
                 <ul className="py-3">
                   <DropdownItem
                     href="/programs/resource-center"
-                    label="ICFL Homeschool Resource Center"
+                    label="Our Resource Center"
                   />
-                  <DropdownItem href="/programs/clubs" label="Clubs" />
-                  <DropdownItem href="/programs/classes" label="Classes" />
+                  <DropdownItem href="/programs/classes" label="Classes and Clubs" />
                   <DropdownItem
-                    href="/programs/community-expo"
+                    href="/programs/communityExpo"
                     label="Community EXPO Event"
                   />
                 </ul>
