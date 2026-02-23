@@ -317,16 +317,6 @@ export default function Home() {
 
         <HomeGalleryReel />
         <JoinSupportPanelsSection />
-
-        <section className="relative h-[320px] bg-black sm:h-[380px]">
-          <img
-            src="/images/spinning-vinyl-record.webp"
-            alt="Vinyl spin background"
-            className="absolute inset-0 h-full w-full object-cover object-center opacity-90"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-black/15" />
-        </section>
       </main>
     </>
   );
