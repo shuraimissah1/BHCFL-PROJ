@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const GALLERY_REEL_IMAGES = [
   "https://images.squarespace-cdn.com/content/v1/680df32fdac3025d588dd659/48cb196e-09e2-4bc5-943f-1319432e4981/_d_38daae_8_i7eUd018svcle4nb9i36f5t_thucbt.png",
@@ -31,39 +31,68 @@ const GALLERY_REEL_IMAGES = [
   "https://images.squarespace-cdn.com/content/v1/680df32fdac3025d588dd659/5b7fd2d2-68ca-4134-bd68-ca2ac45d7c13/BHCFL+Admin-Yearbook-72896449636.png",
 ] as const;
 
-const SLIDE_WIDTH = "clamp(280px, 60vh, 760px)";
-
 export default function HomeGalleryReel() {
-  const [activeIndex, setActiveIndex] = useState(0);
   const totalSlides = GALLERY_REEL_IMAGES.length;
+  const loopStartIndex = totalSlides;
+  const [activeIndex, setActiveIndex] = useState(loopStartIndex);
+  const [isAnimating, setIsAnimating] = useState(true);
 
-  const translate = useMemo(
-    () =>
-      `translateX(calc(50% - (var(--slide-width) / 2) - ${activeIndex} * var(--slide-width)))`,
-    [activeIndex]
+  const loopedSlides = useMemo(
+    () => [...GALLERY_REEL_IMAGES, ...GALLERY_REEL_IMAGES, ...GALLERY_REEL_IMAGES],
+    []
   );
 
+  useEffect(() => {
+    if (!isAnimating) {
+      const frameId = requestAnimationFrame(() => setIsAnimating(true));
+      return () => cancelAnimationFrame(frameId);
+    }
+
+    return undefined;
+  }, [isAnimating]);
+
   const goToPrevious = () => {
-    setActiveIndex((current) => (current - 1 + totalSlides) % totalSlides);
+    setIsAnimating(true);
+    setActiveIndex((current) => current - 1);
   };
 
   const goToNext = () => {
-    setActiveIndex((current) => (current + 1) % totalSlides);
+    setIsAnimating(true);
+    setActiveIndex((current) => current + 1);
+  };
+
+  const handleTransitionEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+
+    if (activeIndex >= totalSlides * 2) {
+      setIsAnimating(false);
+      setActiveIndex((current) => current - totalSlides);
+      return;
+    }
+
+    if (activeIndex < totalSlides) {
+      setIsAnimating(false);
+      setActiveIndex((current) => current + totalSlides);
+    }
   };
 
   return (
     <section className="bg-[#e6e6e6] py-10 sm:py-12">
       <div className="mx-auto w-full max-w-[1700px] px-2 sm:px-6">
-        <div
-          className="relative mx-auto h-[75vh] min-h-[420px] max-h-[950px] overflow-hidden [--slide-width:clamp(280px,60vh,760px)]"
-          style={{ ["--slide-width" as string]: SLIDE_WIDTH }}
-        >
+        <div className="relative mx-auto h-[75vh] min-h-[420px] max-h-[950px] overflow-hidden [--slide-width:clamp(280px,60vh,760px)]">
           <div
-            className="flex h-full transition-transform duration-500 ease-out"
-            style={{ transform: translate }}
+            className={`flex h-full ${
+              isAnimating ? "transition-transform duration-500 ease-out" : ""
+            }`}
+            style={{
+              transform: `translateX(calc(50% - (var(--slide-width) / 2) - ${activeIndex} * var(--slide-width)))`,
+            }}
+            onTransitionEnd={handleTransitionEnd}
           >
-            {GALLERY_REEL_IMAGES.map((imageSrc, index) => (
-              <div key={imageSrc} className="h-full w-[var(--slide-width)] shrink-0">
+            {loopedSlides.map((imageSrc, index) => (
+              <div key={`${imageSrc}-${index}`} className="h-full w-[var(--slide-width)] shrink-0">
                 <img
                   src={imageSrc}
                   alt={`BHCFL gallery slide ${index + 1}`}

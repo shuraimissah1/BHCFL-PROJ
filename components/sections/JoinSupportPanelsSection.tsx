@@ -9,7 +9,7 @@ export default function JoinSupportPanelsSection() {
   return (
     <section className="bg-[#e6e6e6]">
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="relative h-[300px] sm:h-[360px] lg:h-[430px]">
+        <div className="relative h-[360px] sm:h-[460px] lg:h-[620px]">
           <img
             src={HANDS_IMAGE}
             alt="People stacking hands together outdoors"
@@ -25,7 +25,7 @@ export default function JoinSupportPanelsSection() {
           </a>
         </div>
 
-        <div className="relative h-[300px] sm:h-[360px] lg:h-[430px]">
+        <div className="relative h-[360px] sm:h-[460px] lg:h-[620px]">
           <img
             src={CENTER_IMAGE}
             alt="BHCFL Homeschool Resource Center building"
