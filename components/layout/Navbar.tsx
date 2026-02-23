@@ -14,6 +14,9 @@ type NavItem =
   | { href: string; label: string; dropdown?: never }
   | { label: string; dropdown: DropdownItem[]; href?: never };
 
+const DONATE_URL =
+  "https://buy.stripe.com/4gweWJef73LI2tO9AA?locale=en&__embed_source=buy_btn_1SX3WgLJF2NMRJ6M88Y56jMA";
+
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   {
@@ -43,7 +46,7 @@ const NAV_LINKS = [
     ],
   },
   { href: "/events", label: "Events" },
-  { href: "/donate", label: "Donate" },
+  { href: DONATE_URL, label: "Donate" },
   { href: "/contact", label: "Contact" },
   { href: "/culturally-relevant", label: "Culturally Relevant" },
   { href: "/shop", label: "SHOP" },
@@ -108,14 +111,25 @@ export default function Navbar() {
                     </li>
                   ) : (
                     <li key={item.label}>
-                      <Link
-                        href={item.href}
-                        className={`pb-1 transition-opacity hover:opacity-70 ${
-                          pathname === item.href ? "border-b border-[#333333]" : ""
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
+                      {item.href.startsWith("http") ? (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="pb-1 transition-opacity hover:opacity-70"
+                        >
+                          {item.label}
+                        </a>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          className={`pb-1 transition-opacity hover:opacity-70 ${
+                            pathname === item.href ? "border-b border-[#333333]" : ""
+                          }`}
+                        >
+                          {item.label}
+                        </Link>
+                      )}
                     </li>
                   )
                 )}
@@ -205,9 +219,20 @@ export default function Navbar() {
                 </li>
               ) : (
                 <li key={item.label}>
-                  <Link href={item.href} onClick={() => setOpen(false)}>
-                    {item.label}
-                  </Link>
+                  {item.href.startsWith("http") ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={() => setOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link href={item.href} onClick={() => setOpen(false)}>
+                      {item.label}
+                    </Link>
+                  )}
                 </li>
               )
             )}

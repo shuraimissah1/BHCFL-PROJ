@@ -4,6 +4,10 @@ import {
   VisionPhotoGrid,
 } from "@/components/sections/MissionVisionMedia";
 
+const DONATE_URL =
+  "https://buy.stripe.com/4gweWJef73LI2tO9AA?locale=en&__embed_source=buy_btn_1SX3WgLJF2NMRJ6M88Y56jMA";
+const COMMUNITY_PARTNERS_IMAGE =
+  "https://images.squarespace-cdn.com/content/v1/680df32fdac3025d588dd659/11baae40-2931-4f7a-a88c-939db717d288/download%2B%2812%29.png";
 const TAGLINE = "CONNECTING, BUILDING, LEARNING AND GROWING TOGETHER";
 
 const MISSION_TEXT =
@@ -68,7 +72,9 @@ function LeftPanel({ title }: { title: string }) {
 function DonateButton() {
   return (
     <Link
-      href="/donate"
+      href={DONATE_URL}
+      target="_blank"
+      rel="noreferrer"
       className="inline-flex w-fit items-center justify-center rounded-xl bg-[#0a0c12] px-10 py-5 text-base font-black uppercase tracking-tight text-white transition hover:bg-black sm:px-14 sm:py-6 sm:text-2xl"
     >
       Donate to BHCFL
@@ -133,6 +139,35 @@ export default function MissionPage() {
           </div>
         </section>
       </div>
+
+      <section className="border-y-[4px] border-[#b7220a] bg-[#d9d9d9] py-10 sm:py-14">
+        <div
+          className="mx-auto max-w-[1400px] px-6 text-center"
+          style={{ fontFamily: "Avenir Next, Helvetica Neue, Arial, sans-serif" }}
+        >
+          <h2 className="text-3xl font-semibold tracking-tight text-[#151515] sm:text-5xl">
+            Our Community Partners
+          </h2>
+          <p className="mt-6 text-base leading-relaxed text-[#303030] sm:text-2xl">
+            We LOVE our Community Partners!
+          </p>
+          <p className="mt-3 text-base leading-relaxed text-[#303030] sm:text-2xl">
+            Thank You
+          </p>
+          <p className="mt-1 text-base leading-relaxed text-[#303030] sm:text-2xl">
+            For Your Generous Contributions!
+          </p>
+
+          <div className="mx-auto mt-8 w-full max-w-[1280px]">
+            <img
+              src={COMMUNITY_PARTNERS_IMAGE}
+              alt="BHCFL community partners"
+              className="h-auto w-full"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

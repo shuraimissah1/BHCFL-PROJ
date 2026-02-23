@@ -4,6 +4,8 @@ const CENTER_IMAGE =
   "https://images.squarespace-cdn.com/content/v1/680df32fdac3025d588dd659/bc66a2c3-fb63-4ef9-b3f1-8dcd71bcd9fd/download+%289%29.png";
 const READING_IMAGE =
   "https://images.squarespace-cdn.com/content/v1/680df32fdac3025d588dd659/32308771-c38e-4dcd-b7fa-919cf1e0886f/download+%2811%29.png";
+const DONATE_URL =
+  "https://buy.stripe.com/4gweWJef73LI2tO9AA?locale=en&__embed_source=buy_btn_1SX3WgLJF2NMRJ6M88Y56jMA";
 
 export default function JoinSupportPanelsSection() {
   return (
@@ -76,7 +78,9 @@ export default function JoinSupportPanelsSection() {
         <div className="absolute inset-0 bg-black/10" />
         <div className="relative mx-auto flex min-h-[700px] w-full max-w-[1800px] items-end justify-center px-6 pb-10 pt-12 sm:min-h-[760px] sm:pb-12 lg:min-h-[840px]">
           <a
-            href="https://www.bhcflstrong.org/donate-1"
+            href={DONATE_URL}
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex min-h-[112px] min-w-[370px] items-center justify-center rounded-2xl border border-black/55 bg-[#f2f2f2] px-10 text-[22px] font-semibold text-black shadow-[0_14px_30px_rgba(0,0,0,0.28)] transition hover:bg-white"
           >
             Support Our Mission
