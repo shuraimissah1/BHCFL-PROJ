@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   MissionPhotoCarousel,
   VisionPhotoGrid,
@@ -71,14 +70,14 @@ function LeftPanel({ title }: { title: string }) {
 
 function DonateButton() {
   return (
-    <Link
+    <a
       href={DONATE_URL}
       target="_blank"
       rel="noreferrer"
       className="inline-flex w-fit items-center justify-center rounded-xl bg-[#0a0c12] px-10 py-5 text-base font-black uppercase tracking-tight text-white transition hover:bg-black sm:px-14 sm:py-6 sm:text-2xl"
     >
       Donate to BHCFL
-    </Link>
+    </a>
   );
 }
 

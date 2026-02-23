@@ -318,9 +318,9 @@ export default function Home() {
         <HomeGalleryReel />
         <JoinSupportPanelsSection />
 
-        <section className="relative h-[220px] bg-black">
+        <section className="relative h-[320px] bg-black sm:h-[380px]">
           <img
-            src="https://images.squarespace-cdn.com/content/v1/680df32fdac3025d588dd659/a42df4ef-6d5e-467a-bd33-947853218d2a/Vinyl-Spin-1-imgg-gi3-jlqzahcb.png"
+            src="/images/spinning-vinyl-record.webp"
             alt="Vinyl spin background"
             className="absolute inset-0 h-full w-full object-cover object-center opacity-90"
             loading="lazy"

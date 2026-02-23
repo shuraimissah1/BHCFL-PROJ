@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const DONATE_URL =
   "https://buy.stripe.com/4gweWJef73LI2tO9AA?locale=en&__embed_source=buy_btn_1SX3WgLJF2NMRJ6M88Y56jMA";
 
@@ -67,14 +65,14 @@ export default function VillageWelcomeSection() {
             </p>
           </div>
 
-          <Link
+          <a
             href={DONATE_URL}
             className="mt-12 inline-flex min-h-[58px] min-w-[220px] items-center justify-center rounded-md bg-white px-8 py-3 text-[20px] font-semibold text-black transition hover:bg-white/90"
             target="_blank"
             rel="noreferrer"
           >
             Donate to BHCFL
-          </Link>
+          </a>
         </div>
       </div>
     </section>

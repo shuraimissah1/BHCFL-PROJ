@@ -1,5 +1,6 @@
 const HERO_IMAGE =
   "https://images.squarespace-cdn.com/content/v1/680df32fdac3025d588dd659/1760058100463-6KADM62RPX536ENHBWXD/unsplash-image-VJVsEnR_vNE.jpg";
+const VINYL_SPIN_IMAGE = "/images/spinning-vinyl-record.webp";
 
 const INTRO_HEADING =
   "Black Homeschoolers of Central Florida: Empowering Families with Personalized Education!";
@@ -85,6 +86,16 @@ export default function CulturallyRelevantPage() {
           </div>
         </section>
       </div>
+
+      <section className="relative -mx-6 mt-14 h-[320px] overflow-hidden bg-black sm:-mx-10 sm:h-[380px] lg:-mx-12">
+        <img
+          src={VINYL_SPIN_IMAGE}
+          alt="Spinning vinyl record background"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-90"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-black/20" />
+      </section>
     </main>
   );
 }
