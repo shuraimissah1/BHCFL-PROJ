@@ -1,6 +1,10 @@
 import VillageWelcomeSection from "@/components/sections/VillageWelcomeSection";
 import HomeGalleryReel from "@/components/sections/HomeGalleryReel";
 import JoinSupportPanelsSection from "@/components/sections/JoinSupportPanelsSection";
+import SpiralImageCarousel from "@/components/sections/SpiralImageCarousel";
+
+const SPIRAL_TEXT = "CONNECTING, BUILDING, LEARNING AND GROWING TOGETHER! ";
+const SPIRAL_TRACK = SPIRAL_TEXT.repeat(8);
 
 const NEWS_BUTTON_IMAGE =
   "https://images.squarespace-cdn.com/content/v1/680df32fdac3025d588dd659/8f8e5820-6345-49dd-83ea-d26c5c24f183/image+%285%29.png";
@@ -32,15 +36,54 @@ const NEWS_ITEMS = [
 
 export default function Home() {
   return (
-    <main className="bg-black text-white">
-      <VillageWelcomeSection />
+    <>
+      <section className="hidden xl:block border-y-[3px] border-[#232323] bg-[#f7a030] shadow-[inset_0_10px_20px_rgba(255,255,255,0.4)]">
+        <div className="h-[190px] overflow-hidden 2xl:h-[230px]">
+          <svg
+            className="h-full w-full"
+            viewBox="0 0 3000 820"
+            preserveAspectRatio="none"
+            role="img"
+            aria-label="Connecting, building, learning and growing together"
+          >
+            <defs>
+              <path
+                id="spiral-marquee-path"
+                d="M -1400 410 Q -500 40 400 410 T 2200 410 T 4000 410 T 5800 410"
+              />
+            </defs>
+            <text
+              fill="#1f2937"
+              fontSize="104"
+              fontWeight="500"
+              letterSpacing="1.5"
+              fontFamily="Avenir Next, Helvetica Neue, Arial, sans-serif"
+            >
+              <textPath href="#spiral-marquee-path" startOffset="0%">
+                {SPIRAL_TRACK}
+                <animate
+                  attributeName="startOffset"
+                  from="0%"
+                  to="-100%"
+                  dur="18s"
+                  repeatCount="indefinite"
+                />
+              </textPath>
+            </text>
+          </svg>
+        </div>
+      </section>
 
-      <section className="relative overflow-hidden bg-[#e6e6e6] text-[#1a1a1a]">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-[24px] bg-white"
-          style={{ clipPath: "polygon(0 100%, 100% 0, 100% 100%)" }}
-        />
+      <SpiralImageCarousel />
+      <main className="bg-black text-white">
+        <VillageWelcomeSection />
+
+        <section className="relative overflow-hidden bg-[#e6e6e6] text-[#1a1a1a]">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 top-0 h-[24px] bg-white"
+            style={{ clipPath: "polygon(0 100%, 100% 0, 100% 100%)" }}
+          />
 
         <div className="mx-auto grid max-w-[1800px] grid-cols-1 lg:grid-cols-[46%_54%]">
           <div className="bg-[#e6e6e6] px-7 pb-10 pt-16 sm:px-12 lg:px-20 lg:pt-24">
@@ -257,33 +300,34 @@ export default function Home() {
           </div>
         </div>
 
-        <svg
-          aria-hidden
-          className="pointer-events-none absolute -bottom-1 left-0 h-[70px] w-full"
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,20 C330,96 1110,96 1440,20"
-            fill="none"
-            stroke="#e56a1f"
-            strokeWidth="6"
+          <svg
+            aria-hidden
+            className="pointer-events-none absolute -bottom-1 left-0 h-[70px] w-full"
+            viewBox="0 0 1440 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,20 C330,96 1110,96 1440,20"
+              fill="none"
+              stroke="#e56a1f"
+              strokeWidth="6"
+            />
+          </svg>
+        </section>
+
+        <HomeGalleryReel />
+        <JoinSupportPanelsSection />
+
+        <section className="relative h-[220px] bg-black">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/680df32fdac3025d588dd659/a42df4ef-6d5e-467a-bd33-947853218d2a/Vinyl-Spin-1-imgg-gi3-jlqzahcb.png"
+            alt="Vinyl spin background"
+            className="absolute inset-0 h-full w-full object-cover object-center opacity-90"
+            loading="lazy"
           />
-        </svg>
-      </section>
-
-      <HomeGalleryReel />
-      <JoinSupportPanelsSection />
-
-      <section className="relative h-[220px] bg-black">
-        <img
-          src="https://images.squarespace-cdn.com/content/v1/680df32fdac3025d588dd659/a42df4ef-6d5e-467a-bd33-947853218d2a/Vinyl-Spin-1-imgg-gi3-jlqzahcb.png"
-          alt="Vinyl spin background"
-          className="absolute inset-0 h-full w-full object-cover object-center opacity-90"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-black/15" />
-      </section>
-    </main>
+          <div className="absolute inset-0 bg-black/15" />
+        </section>
+      </main>
+    </>
   );
 }
