@@ -33,7 +33,6 @@ const NAV_LINKS = [
     dropdown: [
       { href: "/membership/join", label: "Join BHCFL" },
       { href: "/membership/start-homeschooling", label: "Start Homeschooling" },
-      { href: "/membership/helpful", label: "Helpful Sites" },
       { href: "/membership/scholarships", label: "Scholarships" },
     ],
   },
@@ -41,13 +40,12 @@ const NAV_LINKS = [
     label: "Programs",
     dropdown: [
       { href: "/programs/resource-center", label: "Our Resource Center" },
-      { href: "/programs/classes", label: "Classes and Clubs" },
-      { href: "/programs/communityExpo", label: "Community EXPO Event" },
+      { href: "/programs/learning-center", label: "Our Learning Center" },
+      { href: "/programs/clubs", label: "Clubs" },
     ],
   },
-  { href: "/events", label: "Events" },
+  { href: "/classes", label: "Classes" },
   { href: DONATE_URL, label: "Donate" },
-  { href: "/contact", label: "Contact" },
   { href: "/culturally-relevant", label: "Culturally Relevant" },
   { href: "/shop", label: "SHOP" },
 ] as const satisfies readonly NavItem[];
@@ -203,7 +201,7 @@ export default function Navbar() {
       {open && (
         <div className="max-h-[calc(100vh-72px)] overflow-y-auto border-t border-stone-200 bg-[#f2efea] px-4 py-4 xl:hidden">
           <ul className="space-y-3 text-[14px] text-gray-800">
-            {NAV_LINKS.map((item) =>
+            {NAV_LINKS.map((item) => (
               "dropdown" in item ? (
                 <li key={item.label}>
                   <span className="font-medium">{item.label}</span>
@@ -235,7 +233,7 @@ export default function Navbar() {
                   )}
                 </li>
               )
-            )}
+            ))}
             <li className="border-t border-stone-300 pt-3">
               <Link href="/login" onClick={() => setOpen(false)}>
                 Login

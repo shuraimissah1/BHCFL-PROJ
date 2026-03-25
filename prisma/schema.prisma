@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Recording {
+  id         String   @id @default(cuid())
+  title      String
+  youtubeUrl String
+  thumbnail  String? 
+  duration   String?
+  description String?
+  visibility String  @default("public")
+  createdAt  DateTime @default(now())
+}
+
+model LiveSession {
+  id         String   @id @default(cuid())
+  title      String
+  description String?
+  start      DateTime
+  end        DateTime
+  provider   String? 
+  joinUrl    String?
+  visibility String  @default("public")
+  capacity   Int?
+  createdAt  DateTime @default(now())
+  rsvps      RSVP[]
+}
+
+model RSVP {
+  id        String   @id @default(cuid())
+  session   LiveSession @relation(fields: [sessionId], references: [id])
+  sessionId String
+  name      String?
+  email     String
+  token     String   @unique
+  used      Boolean  @default(false)
+  usedAt    DateTime?
+  createdAt DateTime @default(now())
+}

@@ -4,43 +4,43 @@ import Image from "next/image";
 const clubs = [
   {
     title: "Science Club",
-    image: "/images/clubs/science.png",
+    image: "/images/science.webp",
     description:
       "An exciting way for students to explore and engage with the world of science.",
   },
   {
     title: "Art Club",
-    image: "/images/clubs/art.png",
+    image: "/images/art.webp",
     description:
       "Provides an outlet for creative expression, development of artistic skills, and gaining connections.",
   },
   {
     title: "Gaming Club",
-    image: "/images/clubs/gaming.png",
+    image: "/images/gaming.webp",
     description:
       "Primarily focused on video games, club members get to try out new games brought by members and engage in multiplayer-friendly competition.",
   },
   {
     title: "Gardening & Canning Club",
-    image: "/images/clubs/gardening.png",
+    image: "/images/gardening.webp",
     description:
       "Offers a preservation canning series. Learn how to preserve your garden produce and ensure your family is well-fed with safe, delicious food for years to come.",
   },
   {
     title: "Math Club",
-    image: "/images/clubs/math.png",
+    image: "/images/math.webp",
     description:
       "A fun way to develop students’ mathematical curiosity, exploration, and discovery through math games and manipulatives.",
   },
   {
     title: "Book Club",
-    image: "/images/clubs/book.png",
+    image: "/images/book.webp",
     description:
       "Read and talk about books based on a topic or an agreed-upon reading list.",
   },
 ];
 
-export default function ClassesAndClubsPage() {
+export default function ClubsPage() {
   return (
     <main className="pt-28 bg-[#F4EFE9]">
       {/* HERO */}
@@ -104,6 +104,9 @@ export default function ClassesAndClubsPage() {
           ))}
         </div>
       </section>
+
+      {/* CLASSES BROWSER (moved) */}
+      {/* Note: the classes browser was moved to the top-level /classes route. */}
     </main>
   );
 }
